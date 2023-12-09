@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/wall"
+    >
+
+
+    <Button
+        android:id="@+id/rndbtn"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_background3"
+        android:onClick="RandomFun"
+        android:text="Random Generator"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.83" />
+
+    <Button
+        android:id="@+id/cnvbtn"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_background2"
+        android:onClick="ConvertFun"
+        android:text="Converter"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.361" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:background="@drawable/textview_background1"
+        android:gravity="center"
+        android:text="MOHAMAD ALNASSER"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:background="@drawable/textview_background2"
+        android:gravity="center"
+        android:text="201913709089"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.171" />
+
+    <Button
+        android:id="@+id/smsbtn"
+        android:layout_width="195dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_background1"
+        android:onClick="SmsFun"
+        android:text="SMS Sender"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.601" />
+</androidx.constraintlayout.widget.ConstraintLayout>
