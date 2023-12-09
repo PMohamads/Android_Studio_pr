@@ -2,13 +2,20 @@ package com.example.appprojesi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Random;
 
 
 public class RandomActvity extends AppCompatActivity {
@@ -26,7 +33,6 @@ public class RandomActvity extends AppCompatActivity {
         MaksDegeri = findViewById(R.id.maksinput);
         MinimumDegeri = findViewById(R.id.mininput);
         AnaPenceresi = findViewById(R.id.liste);
-
 
 
     }
@@ -52,8 +58,92 @@ public class RandomActvity extends AppCompatActivity {
         }catch (Exception e){
             e.printStackTrace();
             Toast.makeText(getApplicationContext(),"Minimum Sayiyi Yanlış Formatta Girdiniz ",Toast.LENGTH_SHORT).show();
+        }
+        AnaPenceresi.removeAllViews();
+        for (int i = 1 ; i <= deger ; i++){
+            Random rnd = new Random();
+            int temp;
+            int minimumdeger = rnd.nextInt(maks - min + 1 )+ min;
+            int maksinmumdeger = rnd.nextInt(maks - min + 1 )+ min;
+            if (minimumdeger > maksinmumdeger){
+                temp = minimumdeger;
+                minimumdeger = maksinmumdeger;
+                maksinmumdeger = temp;
+            }
+            int rasgeledeger = rnd.nextInt(maksinmumdeger - minimumdeger + 1 )+ minimumdeger;
+            float ilkdeger = maksinmumdeger - minimumdeger ;
+            float ikincideger = ilkdeger /100;
+            float sondeger = ikincideger * rasgeledeger ;
+            int rasgeledegerinoraini = Math.round(sondeger);
+
+            LinearLayout Pencere = new LinearLayout(this);
+            Pencere.setLayoutParams(new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                    ));
+            Pencere.setOrientation(LinearLayout.VERTICAL);
+
+            TextView RasgeleDegerView = new TextView(this);
+            RasgeleDegerView.setLayoutParams(new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            ));
+            RasgeleDegerView.setText(rasgeledeger + " = " + rasgeledegerinoraini +"%");
+            RasgeleDegerView.setGravity(Gravity.CENTER_HORIZONTAL);
+
+            LinearLayout horizantalPenceresi = new LinearLayout(this);
+            horizantalPenceresi.setLayoutParams(new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            ));
+            horizantalPenceresi.setOrientation(LinearLayout.HORIZONTAL);
+
+            Pencere.addView(RasgeleDegerView);
+            Pencere.addView(horizantalPenceresi);
+
+            TextView MinimumDegerView = new TextView(this);
+            LinearLayout.LayoutParams mindegerParams = new LinearLayout.LayoutParams(
+                    0,
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    1
+            );
+            mindegerParams.setMargins(15,0,0,0);
+            MinimumDegerView.setLayoutParams(mindegerParams);
+            MinimumDegerView.setText(String.valueOf(minimumdeger));
+            MinimumDegerView.setGravity(Gravity.START);
+
+            ProgressBar progressBar = new ProgressBar(RandomActvity.this,null, android.R.attr.progressBarStyleHorizontal);
+            LinearLayout.LayoutParams progressBarparams = new LinearLayout.LayoutParams(
+                    0,
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    3
+            );
+            progressBar.setLayoutParams(progressBarparams);
+            progressBar.setProgressDrawable(getDrawable(R.drawable.custom_progressbar_bg));
+            progressBarparams.setMargins(0,20,0,20);
+            progressBar.setMax(200);
+            progressBar.setProgress(rasgeledeger);
+
+            TextView MaksimumDegerView = new TextView(this);
+            LinearLayout.LayoutParams maksdegerParams = new LinearLayout.LayoutParams(
+                    0,
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    1
+            );
+            maksdegerParams.setMargins(70,0,0,0);
+            MaksimumDegerView.setLayoutParams(maksdegerParams);
+            MaksimumDegerView.setText(String.valueOf(maksinmumdeger));
+            MaksimumDegerView.setGravity(Gravity.START);
+
+
+            horizantalPenceresi.addView(MinimumDegerView);
+            horizantalPenceresi.addView(progressBar);
+            horizantalPenceresi.addView(MaksimumDegerView);
+
+            AnaPenceresi.addView(Pencere);
 
         }
+
     }
 
 
@@ -208,18 +298,6 @@ public class RandomActvity extends AppCompatActivity {
                 containerLayout.addView(linearLayout); // Add the LinearLayout to the main container
             }
         }
-    }
-
-
-
-
-    // Helper method to generate a random value within a range
-    private int generateRandomValue(int min, int max) {
-        if (min >= max) {
-            throw new IllegalArgumentException("Max value must be greater than min value.");
-        }
-        Random random = new Random();
-        return random.nextInt(max - min + 1) + min;
     }
 }*/
 }
